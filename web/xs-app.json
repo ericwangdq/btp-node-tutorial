@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "source": "^/nodeapp/(.*)$",
+      "target": "$1",
+      "destination": "nodeapp"
+    }
+  ]
+}

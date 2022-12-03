@@ -1,1 +1,67 @@
-# btp-node-tutorial
+## Create a Node.js Application via Cloud Foundry Command Line Interface
+
+https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create.html
+
+## How to Deploy:
+
+1. Open a command-line console.
+
+2. Set the Cloud Foundry API endpoint for your subaccount. Execute (using your actual region URL):
+
+```
+cf api https://api.cf.eu20.hana.ondemand.com
+```
+
+3. Log in to SAP BTP, Cloud Foundry environment:
+
+```
+cf login
+
+or
+
+cf login -a https://api.cf.eu20.hana.ondemand.com --sso
+```
+
+4. Deploy the application on Cloud Foundry. To do that, in the node-tutorial directory, execute:
+
+```
+cf push
+```
+
+<pre>
+Make sure you always execute cf push in the folder where the manifest.yml file is located! In this case, that’s node-tutorial.
+</pre>
+
+## Build error
+
+https://answers.sap.com/questions/13113927/deployment-project-failed-app-staging-failed-in-th.html
+
+Modify node version in package.json
+
+```json
+"engines": {
+    "node": "14.20.0"  // 14.19.3 ^12.18
+  }
+```
+
+Unable to install node: no match found for ^12.18 in [14.20.0 14.20.1 16.17.0 16.17.1 18.9.0 18.10.0]
+
+JWT TOKEN decoder
+https://token.dev/
+
+Implement axios interceptor for access_token and refresh_token
+https://mp.weixin.qq.com/s/6JZ2OO9_mJMrFNHzxgZoDg -- 拦截器实现用户无感刷新 access_token
+
+ODS ACD
+https://wiki.one.int.sap/wiki/display/Eureka/ACD
+
+High Level Architecture
+See attached image
+
+App / Central Router
+https://blogs.sap.com/2020/10/02/serverless-sap-fiori-apps-in-sap-cloud-platform/
+https://blogs.sap.com/2021/05/17/sap-tech-bytes-faq-managed-approuter-vs.-standalone-approuter/
+https://blogs.sap.com/2020/09/11/html5-applications-managed-by-sap-cloud-platform-the-new-way-of-developing-html5-apps/ (“HTML5 Applications Managed by….”)
+
+Advice
+Fiori Elements might only work or at least work better with oData (instead of Rest)
