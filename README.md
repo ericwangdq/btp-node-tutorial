@@ -19,7 +19,7 @@ cf login
 
 or
 
-cf login -a https://api.cf.eu20.hana.ondemand.com --sso
+cf login -a https://api.cf.us21.hana.ondemand.com --sso
 ```
 
 4. Deploy the application on Cloud Foundry. To do that, in the node-tutorial directory, execute:
