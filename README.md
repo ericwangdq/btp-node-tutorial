@@ -9,7 +9,7 @@ https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create.html
 2. Set the Cloud Foundry API endpoint for your subaccount. Execute (using your actual region URL):
 
 ```
-cf api https://api.cf.eu20.hana.ondemand.com
+cf api https://api.cf.us21.hana.ondemand.com
 ```
 
 3. Log in to SAP BTP, Cloud Foundry environment:
@@ -45,6 +45,17 @@ Modify node version in package.json
 ```
 
 Unable to install node: no match found for ^12.18 in [14.20.0 14.20.1 16.17.0 16.17.1 18.9.0 18.10.0]
+
+5. Add entitlement Cloud Fundary Runtime and assign it to subaccount
+   https://answers.sap.com/questions/556246/cloud-foundry-trial--you-have-exceeded-the-total-r.html
+
+6. Create quota plan in subaccount and assign it CF space
+
+7. Create an xsuaa service instance named nodeuaa with plan application. To do that, execute the following command in the node-tutorial directory:
+
+```
+  cf create-service xsuaa application nodeuaa -c xs-security.json
+```
 
 JWT TOKEN decoder
 https://token.dev/
