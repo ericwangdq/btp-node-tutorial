@@ -67,6 +67,12 @@ app.post("/users", function (req, res) {
   res.status(201).json(newUser);
 });
 
+app.get("/hello", function (req, res) {
+  res.status(200).json({
+    msg: `Hello world ${req.user.id} at ${new Date().toLocaleString()}`,
+  });
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log("nodeapp listening on port " + port);

@@ -40,7 +40,7 @@ Modify node version in package.json
 
 ```json
 "engines": {
-    "node": "14.20.0"  // 14.19.3 ^12.18
+    "node": "14.20.0"  // 16.18.1 14.19.3 ^12.18
   }
 ```
 

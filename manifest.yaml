@@ -2,7 +2,7 @@
 applications:
 - name: nodeapp
   routes:
-    - route: node-api-sit03.cfapps.us21.hana.ondemand.com
+    - route: node-api-sit02.cfapps.us21.hana.ondemand.com
   path: nodeapp
   memory: 128M
   buildpack: nodejs_buildpack
@@ -10,7 +10,7 @@ applications:
   - nodeuaa
 - name: web
   routes:
-    - route: web-app-sit03.cfapps.us21.hana.ondemand.com
+    - route: web-app-sit02.cfapps.us21.hana.ondemand.com
   path: web
   memory: 128M
   env:
@@ -18,7 +18,7 @@ applications:
       [
         {
           "name":"nodeapp",
-          "url":"https://node-api-sit03.cfapps.us21.hana.ondemand.com",
+          "url":"https://node-api-sit02.cfapps.us21.hana.ondemand.com",
           "forwardAuthToken": true
         }
       ]
