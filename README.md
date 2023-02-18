@@ -57,6 +57,26 @@ Unable to install node: no match found for ^12.18 in [14.20.0 14.20.1 16.17.0 16
   cf create-service xsuaa application nodeuaa -c xs-security.json
 ```
 
+8. add User-Provided env variables
+   https://blogs.sap.com/2020/09/09/disable-x-frame-options-in-scp-portal-cloud-foundry/
+   https://help.sap.com/docs/btp/sap-business-technology-platform/environment-variables
+
+https://help.sap.com/docs/btp/sap-business-technology-platform/setting-up-your-own-application-router
+
+```
+// on CF Space UI, add variables
+  SEND_XFRAMEOPTIONS = "ALLOW-FROM hana.ondemand.com"
+
+// use CLI
+cf set-env <myApp1> SEND_XFRAMEOPTIONS false
+
+// or add it in manifest.yaml
+  env:
+    SEND_XFRAMEOPTIONS: "ALLOW-FROM hana.ondemand.com"
+```
+
+9. Change route https://node-api-sit02.cfapps.us21.hana.ondemand.com to node-api-erwflptest.cfapps.us30.hana.ondemand.com, app name and subaccount region need to be changed, then do `cf push`
+
 JWT TOKEN decoder
 https://token.dev/
 
