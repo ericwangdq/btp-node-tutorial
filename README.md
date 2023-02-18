@@ -59,16 +59,30 @@ Unable to install node: no match found for ^12.18 in [14.20.0 14.20.1 16.17.0 16
 
 8. add User-Provided env variables
    https://blogs.sap.com/2020/09/09/disable-x-frame-options-in-scp-portal-cloud-foundry/
-   https://help.sap.com/docs/btp/sap-business-technology-platform/environment-variables
+   https://help.sap.com/docs/btp/sap-business-technology-platform/environment-variables#loioba527058dc4d423a9e0a69ecc67f4593__section_nt3_t4k_sz
 
 https://help.sap.com/docs/btp/sap-business-technology-platform/setting-up-your-own-application-router
 
+https://stackoverflow.com/questions/47719532/x-frame-options-header-is-not-a-recognized-directive
+
 ```
+// use CLI
+cf set-env web SEND_XFRAMEOPTIONS false
+cf set-env web SEND_XFRAMEOPTIONS 'ALLOW-FROM hana.ondemand.com'
+
+cf set-env web httpHeaders "[ { \"X-Frame-Options\": \"ALLOW-FROM hana.ondemand.com\" }, { \"Test-Additional-Header\": \"1\" } ]"
+
+cf set-env web httpHeaders "[ { \"X-Frame-Options\": \"ALLOW-FROM https://web-app-erwflptest.cfapps.us30.hana.ondemand.com\" }, { \"Test-Additional-Header\": \"1\" } ]"
+
+cf set-env web httpHeaders "[ { \"X-Frame-Options\": \"ALLOW-FROM https://web-app-erwflptest.cfapps.us30.hana.ondemand.com\" }, { \"Test-Additional-Header\": \"1\" } ]"
+
+cf set-env web httpHeaders "[ { \"Content-Security-Policy\": \"frame-ancestors https://web-app-erwflptest.cfapps.us30.hana.ondemand.com\" }, { \"Test-Additional-Header\": \"1\" } ]"
+
+cf push
+
 // on CF Space UI, add variables
   SEND_XFRAMEOPTIONS = "ALLOW-FROM hana.ondemand.com"
 
-// use CLI
-cf set-env <myApp1> SEND_XFRAMEOPTIONS false
 
 // or add it in manifest.yaml
   env:
