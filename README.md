@@ -91,6 +91,15 @@ cf push
 
 9. Change route https://node-api-sit02.cfapps.us21.hana.ondemand.com to node-api-erwflptest.cfapps.us30.hana.ondemand.com, app name and subaccount region need to be changed, then do `cf push`
 
+10. CORS support
+    [{"X-Frame-Options": "ALLOW-FROM https://web-app-erwflptest.cfapps.us30.hana.ondemand.com" }, {"Test-Additional-Header": "1"},{"Access-Control-Allow-Origin": "https://erw-flp-test-4zroz7ok.cpp.cfapps.us30.hana.ondemand.com"},{"Access-Control-Allow-Methods": "POST, PUT, DELETE, PATCH, GET, OPTIONS" },{"Access-Control-Allow-Headers": "Authorization, Content-Type"},{"Access-Control-Allow-Credentials":"true"}]
+
+```
+cf set-env web httpHeaders "[ { \"X-Frame-Options\": \"ALLOW-FROM https://web-app-erwflptest.cfapps.us30.hana.ondemand.com\" }, { \"Test-Additional-Header\": \"1\" },{ \"Access-Control-Allow-Origin:\": \"*\" }, { \"Access-Control-Allow-Methods\": \"POST, PUT, DELETE, PATCH, GET, OPTIONS\" }, { \"Access-Control-Allow-Headers\": \"Authorization, Content-Type\" }, { \"Access-Control-Allow-Credentials\": \"true\"}]"
+
+cf set-env nodeapp httpHeaders "[ { \"Access-Control-Allow-Origin:\": \"*\" }, { \"Access-Control-Allow-Methods\": \"POST, PUT, DELETE, PATCH, GET, OPTIONS \" }, { \"Access-Control-Allow-Headers\": \"Authorization, Content-Type, \" }, { \"Access-Control-Allow-Credentials\": true } ]"
+```
+
 JWT TOKEN decoder
 https://token.dev/
 
